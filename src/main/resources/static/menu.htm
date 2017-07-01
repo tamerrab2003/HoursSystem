@@ -1,0 +1,31 @@
+<!-- NAVIGATION_BEGIN -->
+<div id="mufic-navigation" class="mufic-parent">
+	<h2 class="mufic-access">Content navigation</h2>
+	<ul id="mufic-primary-links" data-nav-menu>
+		<li id="mufic-overview"><a href="#/protected/welcome" data-alt="Mufic home">Mufic
+				home</a></li>
+		<li access="USER_ROLE"><a
+			data-ng-class="{'mufic-is-active' :  path.indexOf('results') > 0}"
+			data-ng-href="#/protected/results" data-alt="Results" >Results</a></li>
+		<li access="ADMIN_ROLE"><a
+			data-ng-class="{'mufic-is-active' :  path.indexOf('registerStudent') > 0}"
+			data-ng-href="#/admin/registerStudent" data-alt="Register Student" >Register Student</a></li>
+		<li access="SUPERADMIN_ROLE"><a
+			data-ng-class="{'mufic-is-active' :  path.indexOf('listUsers') > 0}"
+			data-ng-href="#/superadmin/listUsers" data-alt="List users information" >List users</a></li>
+		<li access="SUPERADMIN_ROLE"><a
+			data-ng-class="{'mufic-is-active' :  path.indexOf('settings') > 0}"
+			data-ng-href="#/superadmin/settings" data-alt="Settings" >Settings</a></li>
+		<!-- 	<li><a data-ng-class="{'mufic-is-active' :  path.indexOf('logout') > 0}" href="#/logout" data-alt="Manage user">Logout</a>
+		</li> -->
+
+
+
+	</ul>
+<!-- 	<span class="mufic-secure-link" style="font-size: 0.8em"> Site -->
+<!-- 		secured by<br> <a -->
+<!-- 		href="https://www.mufic.com/profile/update/password">Mufic  -->
+<!-- 			password</a> -->
+<!-- 	</span> -->
+</div>
+<!-- NAVIGATION_END -->

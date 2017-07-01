@@ -1,9 +1,37 @@
-angular.module('hello', [ 'ngRoute' ]) // ... omitted code
-.controller('navigation',
+angular.module('hello', [ 'ngRoute' ]).config(function($routeProvider, $httpProvider, $locationProvider) {
 
-		function($rootScope, $http, $location) {
+	// Disable new routing hash /#!/ for urls
+	$locationProvider.hashPrefix('');
 
+	$routeProvider.when('/', {
+		templateUrl : 'home.html',
+		controller : 'home',
+		controllerAs: 'controller'
+	}).when('/home', {
+		templateUrl : 'home.html',
+		controller : 'home',
+		controllerAs: 'controller'
+	}).when('/login', {
+		templateUrl : 'login.html',
+		controller : 'navigation',
+		controllerAs: 'controller'
+	}).when('/student/register', {
+		templateUrl : 'student/register.html',
+		controller : 'registerCntr',
+		controllerAs: 'controller'
+	}).otherwise('/');
+
+	$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+}).controller('navigation',
+
+		function($rootScope, $http, $location, $route) {
+			
 			var self = this;
+
+			self.tab = function(route) {
+				return $route.current && route === $route.current.controller;
+			};
 
 			var authenticate = function(credentials, callback) {
 
@@ -21,25 +49,45 @@ angular.module('hello', [ 'ngRoute' ]) // ... omitted code
 					} else {
 						$rootScope.authenticated = false;
 					}
-					callback && callback();
+					callback && callback($rootScope.authenticated);
 				}, function() {
 					$rootScope.authenticated = false;
-					callback && callback();
+					callback && callback(false);
 				});
 
 			}
 
 			authenticate();
+
 			self.credentials = {};
 			self.login = function() {
-				authenticate(self.credentials, function() {
-					if ($rootScope.authenticated) {
+				authenticate(self.credentials, function(authenticated) {
+					if (authenticated) {
+						console.log("Login succeeded")
 						$location.path("/");
 						self.error = false;
+						$rootScope.authenticated = true;
 					} else {
+						console.log("Login failed")
 						$location.path("/login");
 						self.error = true;
+						$rootScope.authenticated = false;
 					}
-				});
+				})
 			};
+
+			self.logout = function() {
+				$http.post('logout', {}).finally(function() {
+					$rootScope.authenticated = false;
+					$location.path("/");
+				});
+			}
+
+		}).controller('home', function($http) {
+			var self = this;
+			/*$http.get('/resource/').then(function(response) {
+				self.greeting = response.data;
+			})*/
+		}).controller('registerCntr', function($http) {
+			console.log("registerCntr")
 		});

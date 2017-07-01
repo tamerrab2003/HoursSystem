@@ -1,0 +1,20 @@
+<!-- 
+<p>
+	<span class='mufic-primary-navigation'> <strong>{{currentPageStart+1}}-{{currentPageEnd+1}}</strong>
+		of <strong>{{dataSize}}</strong> results <span'mufic-table-navigation-links'>
+			| <a class='mufic-back-em-link' href ng-click='previous()'>Previous</a>
+			| <a class='mufic-forward-em-link' href ng-click='next()'>Next</a>
+	</span></span>
+</p>
+<div ng-bind-html='pageContent'></div> -->
+<p>
+<span class='mufic-primary-navigation'> <strong>{{currentPageStart+1}}-{{currentPageEnd+1}}</strong>
+	of <strong>{{dataSize}}</strong> results <span'mufic-table-navigation-links'>
+		| <a class='mufic-back-em-link' href ng-click='previous()'>Previous</a>
+		| <a class='mufic-forward-em-link' href ng-click='next()'>Next</a> |
+		Showing <input style="width: 26px;" type="text"
+		ng-model="paginationInfo.pageSize"></input> records per page 
+		<!-- | Filtered by <input type="text" ng-model="filter"></input> -->
+</span></span>
+
+</p>

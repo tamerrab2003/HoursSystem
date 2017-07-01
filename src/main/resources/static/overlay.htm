@@ -1,0 +1,51 @@
+
+
+<div class="mufic-common-overlay" id="overlay">
+	<div class="mufic-head">
+		<p>
+			<a class="mufic-common-overlay-close" href="#close">Close [x]</a>
+		</p>
+	</div>
+	<div class="mufic-body">
+		<div class="mufic-main">
+			<div class="mufic-title mufic-subtitle">
+				<h2>User information</h2>
+			</div>
+			<div class="mufic-container mufic-alternate">
+				<div class="mufic-container-body">
+					<div class="mufic-overlay-rule">
+						<hr />
+					</div>
+					<form class="mufic-column-form mufic-styled-form" method="post">
+						<p>
+							<label for="First_name">First name:<span
+								class="mufic-required"></span></label><span>{{user.firstname}}</span>
+						</p>
+						<p>
+							<label for="Last_name">Last name:</label><span>{{user.lastname}}</span>
+						</p>
+						<p>
+							<label for="Email_id">Email id:</label><span>{{user.emailid}}</span>
+						</p>
+						<p>
+							<label for="User_id">User id:</label><span>{{user.ctmausrId}}</span>
+						</p>
+						<p>
+							<label for="User_type">User type:</label><span>{{user.usertype}}</span>
+						</p>
+						<p>
+							<label for="Identifier">Identifier:</label><span>{{user.identifier}}</span>
+						</p>
+						<p>
+							<label for="Country_code">Country code:</label><span>{{user.ctrycode}}</span>
+						</p>
+						<div class="mufic-overlay-rule">
+							<hr />
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="mufic-footer"></div>
+</div>
